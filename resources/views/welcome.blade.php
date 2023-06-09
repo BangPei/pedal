@@ -19,6 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        @vite('resources/css/app.css')
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -128,5 +129,16 @@
                 </div>
             </div>
         </div>
+        @vite('resources/js/app.js')
     </body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',function(ev){
+            Echo.channel(`hello-channel`)
+                .listen('HelloEvent', (e) => {
+                    console.log('Event from Hello')
+                    console.log(e);
+            });
+        })
+    </script>
 </html>
